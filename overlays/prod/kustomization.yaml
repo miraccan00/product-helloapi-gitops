@@ -8,7 +8,6 @@ helmCharts:
   - name: chart
     releaseName: product-helloapi
     version: "0.1.0"
-    valuesFile: ../../chart/values.yaml
     valuesInline:
       replicaCount: 2
       env: production
