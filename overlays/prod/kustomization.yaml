@@ -1,12 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+helmGlobals:
+  chartHome: ../../
+
 helmCharts:
-  - name: helloapi
+  - name: chart
     releaseName: product-helloapi
     version: "0.1.0"
-    repo: ""
-    chart: ../../chart
     valuesFile: ../../chart/values.yaml
     valuesInline:
       replicaCount: 2
