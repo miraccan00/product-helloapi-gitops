@@ -1,0 +1,10 @@
+replicaCount: 2
+env: production
+message: "Hello from helloapi [PROD]"
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
