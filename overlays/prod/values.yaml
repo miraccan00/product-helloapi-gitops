@@ -1,6 +1,6 @@
 image:
   tag: sha-d96497a
-replicaCount: 2
+replicaCount: 3
 env: production
 message: "Hello from helloapi [PROD]"
 resources:
