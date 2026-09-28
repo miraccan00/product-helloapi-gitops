@@ -1,5 +1,12 @@
 replicaCount: 1
 
+image:
+  repository: ghcr.io/miraccan00/hellofiber
+  # Set per environment in overlays/<env>/values.yaml. Shipping a new build =
+  # changing this one line in a PR; CI publishes sha-<7 chars> on every push.
+  tag: ""
+  pullPolicy: IfNotPresent
+
 env: default
 message: "Hello from helloapi"
 

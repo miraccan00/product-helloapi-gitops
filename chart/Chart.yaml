@@ -1,6 +1,6 @@
 apiVersion: v2
 name: helloapi
-description: Simple nginx chart for testing ArgoCD multi-env deployments
+description: hellofiber (Go Fiber API) packaged for Argo CD multi-env deployments
 type: application
-version: 0.1.0
-appVersion: "1.0.0"
+version: 0.2.0
+appVersion: "sha-d96497a"

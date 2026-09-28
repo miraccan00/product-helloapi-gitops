@@ -1,2 +1,4 @@
+image:
+  tag: sha-d96497a
 env: development
 message: "Hello from helloapi [DEV]"

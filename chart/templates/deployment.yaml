@@ -13,10 +13,25 @@ spec:
         app: {{ .Release.Name }}
     spec:
       containers:
-        - name: nginx
-          image: nginx:alpine
+        - name: hellofiber
+          image: "{{ .Values.image.repository }}:{{ required "image.tag is required (set it in overlays/<env>/values.yaml)" .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 80
+            - name: http
+              containerPort: 8080
+          env:
+            - name: APP_ENV
+              value: {{ .Values.env | quote }}
+            - name: MESSAGE
+              value: {{ .Values.message | quote }}
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
           resources:
             requests:
               cpu: {{ .Values.resources.requests.cpu }}
@@ -24,10 +39,3 @@ spec:
             limits:
               cpu: {{ .Values.resources.limits.cpu }}
               memory: {{ .Values.resources.limits.memory }}
-          volumeMounts:
-            - name: html
-              mountPath: /usr/share/nginx/html
-      volumes:
-        - name: html
-          configMap:
-            name: {{ .Release.Name }}-html
